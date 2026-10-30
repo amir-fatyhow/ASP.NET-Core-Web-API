@@ -6,7 +6,7 @@ namespace ASP.NET_Core_Web_API.Services;
 
 public class EventService : IEventService
 {
-    private static readonly List<Event> _events = new(); 
+    private readonly List<Event> _events = new(); 
 
     public Task<IEnumerable<EventResponseDto>> GetAllEventsAsync(CancellationToken cancellationToken)
     {
