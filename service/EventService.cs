@@ -2,23 +2,39 @@ namespace DefaultNamespace;
 
 public class EventService : IEventService
 {
-    public void setTitle(string title)
+    private readonly List<Event> _events = new();
+
+    public IEnumerable<Event> GetAllEvents()
     {
-        // Логика
+        return _events;
     }
 
-    public void setDescription(string description)
+    public Event? GetEventById(Guid id)
     {
-        // Логика
+        return _events.FirstOrDefault(e => e.Id == id);
     }
 
-    public void setStartAt(DateTime startAt)
+    public Event CreateEvent(Event newEvent)
     {
-        // Логика
+        _events.Add(newEvent);
+        return newEvent;
     }
 
-    public void setEndAt(DateTime endAt)
+    public bool UpdateEvent(Guid id, Event updatedEvent)
     {
-        // Логика
+        var existingEvent = GetEventById(id);
+        if (existingEvent == null) return false;
+
+        existingEvent.Title = updatedEvent.Title;
+        existingEvent.Description = updatedEvent.Description;
+        existingEvent.StartAt = updatedEvent.StartAt;
+        existingEvent.EndAt = updatedEvent.EndAt;
+
+        return true;
+    }
+
+    public bool DeleteEvent(Guid id)
+    {
+        return _events.Remove(_events.FirstOrDefault(e => e.Id == id)!);
     }
 }
