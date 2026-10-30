@@ -1,6 +1,8 @@
+using ASP.NET_Core_Web_API.Interfaces;
+using ASP.NET_Core_Web_API.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DefaultNamespace;
+namespace ASP.NET_Core_Web_API.Controllers;
 
 [ApiController]
 [Route("events")] 

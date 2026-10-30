@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DefaultNamespace;
+namespace ASP.NET_Core_Web_API.Models;
 
 public class Event : IValidatableObject
 {
